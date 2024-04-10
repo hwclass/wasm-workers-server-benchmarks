@@ -3,15 +3,23 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "module": "true",
   "scripts": {
+    "build-wws": "./node_modules/.bin/esbuild hono.js --bundle --minify --format=esm --outfile=./dist/[...app].js",
+    "start-wws": "wws ./dist/[...app].js",
     "start-express": "node express.js",
-    "start-wws": "wws ./primes",
-    "test-express": "k6 run --vus 10 --duration 30s test-express.js",
-    "test-wws": "k6 run --vus 10 --duration 30s test-wws.js"
+    "start-fastify": "node fastify.mjs",
+    "test-wws": "k6 run --vus 10 --duration 30s test-wws.js --out json=wws-results.json",
+    "test-express": "k6 run --vus 10 --duration 30s test-express.js --out json=express-results.json",
+    "test-fastify": "k6 run --vus 10 --duration 30s test-fastify.js --out json=fastify-results.json"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.3"
+    "esbuild": "^0.20.1",
+    "express": "^4.18.3",
+    "fastify": "^4.26.2",
+    "hono": "^4.1.0",
+    "node-jq": "^4.3.1"
   }
 }

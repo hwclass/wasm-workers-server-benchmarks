@@ -24,6 +24,11 @@ export const options = {
   //   }
   // },
 
+  thresholds: {
+    http_req_failed: ['rate<0.01'], // http errors should be less than 1%
+    http_req_duration: ['p(99)<1000'], // 99% of requests should be below 1s
+  },
+
   // Uncomment this section to enable the use of Browser API in your tests.
   //
   // See https://grafana.com/docs/k6/latest/using-k6-browser/running-browser-tests/ to learn more
@@ -56,6 +61,6 @@ export const options = {
 // about authoring k6 scripts.
 //
 export default function() {
-  http.get('http://localhost:8080/100000');
+  http.get('http://localhost:8080/');
   sleep(1);
 }

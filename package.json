@@ -4,7 +4,7 @@
   "description": "Wasm Workers Server Benchmarks",
   "main": "index.js",
   "scripts": {
-    "start": "cd ./node_modules/.bin/wss ./js/ssr"
+    "start-wws": "cd ./node_modules/.bin/wss ./js/ssr"
   },
   "author": "",
   "license": "ISC",
