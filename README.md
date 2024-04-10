@@ -2,6 +2,8 @@
 
 ## Results (2,3 GHz Quad-Core Intel Core i7)
 
+### [Prime](https://github.com/hwclass/wasm-workers-server-benchmarks/tree/main/js/prime)
+
 | Framework        | Average (ms)       | Min (ms)            | Max (ms)           |
 | ------------     | ----------         | ------------------- | ------------------ |
 | WWS (with Hono)  | 0.6826833333333335 | 0.6826833333333335  | 0.6826833333333335 |
