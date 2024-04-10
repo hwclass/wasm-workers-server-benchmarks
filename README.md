@@ -1,4 +1,12 @@
-Wasm Workers Server Benchmarks
+# Wasm Workers Server Benchmarks
+
+## Results (2,3 GHz Quad-Core Intel Core i7)
+
+| Framework        | Average (ms)       | Min (ms)            | Max (ms)           |
+| ------------     | ----------         | ------------------- | ------------------ |
+| WWS (with Hono)  | 0.6826833333333335 | 0.6826833333333335  | 0.6826833333333335 |
+| Fastify          | 2.334613333333334  | 0.348               | 7.228              |
+| Express          | 2.6119366666666664 | 2.6119366666666664  | 2.6119366666666664 |
 
 ## Setup
 
