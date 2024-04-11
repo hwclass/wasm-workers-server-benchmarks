@@ -61,6 +61,6 @@ export const options = {
 // about authoring k6 scripts.
 //
 export default function() {
-  http.get('http://localhost:3001/primes/100000');
+  http.get('http://localhost:8787/primes/100000');
   sleep(1);
 }

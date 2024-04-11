@@ -5,13 +5,17 @@
   "main": "index.js",
   "module": "true",
   "scripts": {
-    "build-wws": "./node_modules/.bin/esbuild hono.js --bundle --minify --format=esm --outfile=./dist/[...app].js",
     "start-wws": "wws ./dist/[...app].js",
-    "start-express": "node express.js",
+    "build-wws": "./node_modules/.bin/esbuild ./primes/index.js --bundle --minify --format=esm --outfile=./dist/[...app].js",
+    "build-hono": "./node_modules/.bin/esbuild ./hono.js --bundle --minify --format=esm --outfile=../dist/[...app].js",
+    "start-hono": "wws ./dist/[...app].js",
+    "start-express": "DEBUG=express:* node express.js",
     "start-fastify": "node fastify.mjs",
-    "test-wws": "k6 run --vus 10 --duration 30s test-wws.js --out json=wws-results.json",
+    "start-worker": "wrangler dev worker.js",
+    "test-hono": "k6 run --vus 10 --duration 30s test-wws.js --out json=wws-results.json",
     "test-express": "k6 run --vus 10 --duration 30s test-express.js --out json=express-results.json",
-    "test-fastify": "k6 run --vus 10 --duration 30s test-fastify.js --out json=fastify-results.json"
+    "test-fastify": "k6 run --vus 10 --duration 30s test-fastify.js --out json=fastify-results.json",
+    "test-worker": "k6 run --vus 10 --duration 30s test-worker.js --out json=worker-results.json"
   },
   "author": "",
   "license": "ISC",
@@ -20,6 +24,7 @@
     "express": "^4.18.3",
     "fastify": "^4.26.2",
     "hono": "^4.1.0",
-    "node-jq": "^4.3.1"
+    "node-jq": "^4.3.1",
+    "wrangler": "^3.49.0"
   }
 }
