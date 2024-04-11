@@ -25,8 +25,8 @@ export const options = {
   // },
 
   thresholds: {
-    http_req_failed: ['rate<0.01'], // http errors should be less than 1%
     http_req_duration: ['p(99)<1000'], // 99% of requests should be below 1s
+    http_req_failed: ['rate<0.01'], // http errors should be less than 1%
   },
 
   // Uncomment this section to enable the use of Browser API in your tests.
@@ -61,6 +61,6 @@ export const options = {
 // about authoring k6 scripts.
 //
 export default function() {
-  http.get('http://localhost:3000/');
+  http.get('http://localhost:3000/primes/100000');
   sleep(1);
 }

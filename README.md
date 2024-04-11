@@ -2,13 +2,12 @@
 
 ## Results (2,3 GHz Quad-Core Intel Core i7)
 
-### [Prime](https://github.com/hwclass/wasm-workers-server-benchmarks/tree/main/js/prime)
-
-| Framework        | Average (ms)       | Min (ms)            | Max (ms)           |
-| ------------     | ----------         | ------------------- | ------------------ |
-| WWS (with Hono)  | 0.6826833333333335 | 0.6826833333333335  | 0.6826833333333335 |
-| Fastify          | 2.334613333333334  | 0.348               | 7.228              |
-| Express          | 2.6119366666666664 | 2.6119366666666664  | 2.6119366666666664 |
+| Framework          | Med (ms)           | Min (ms)            | Max (ms)           |
+| ------------       | ----------         | ------------------- | ------------------ |
+| Fastify            | 8.48               | 6.31                | 77.24              |
+| Express            | 10.62              | 6.77                | 212.23             |
+| Cloudflare Workers | 12.28              | 7.8                 | 121.97             |
+| WWS (with Hono)    | 503.87             | 272.96              | 1010               |
 
 ## Setup
 
@@ -25,34 +24,7 @@ wws --help
 brew install k6
 ```
 
-### Create a file called index.js
-
-```js
-addEventListener("fetch", event => {
-  return event.respondWith(
-    new Response("Hello from Wasm Workers Server!")
-  );
-});
-```
-
-## Run WWS
-
-```sh
-wws .
-
-➜  wasm-workers-server-benchmarks git:(main) ✗ wws .
-⚙️  Preparing the project from: .
-⚙️  Loading routes from: .
-⏳ Loading workers from 1 routes...
-✅ Workers loaded in 726.965769ms.
-    - http://127.0.0.1:8080/
-      => ./index.js
-🚀 Start serving requests at http://127.0.0.1:8080
-
-[2024-03-12T17:22:52Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET / HTTP/1.1" 200 31 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" 0.113979
-[2024-03-12T17:22:52Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET /favicon.ico HTTP/1.1" 404 0 "http://127.0.0.1:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" 0.000036
-[2024-03-12T17:23:01Z INFO  actix_web::middleware::logger] 127.0.0.1 "GET / HTTP/1.1" 200 31 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36" 0.076056
-```
+## Extras
 
 ### Create your K6 Grafana Cloud [here](https://grafana.com/docs/k6/latest/get-started/running-k6/).
 
